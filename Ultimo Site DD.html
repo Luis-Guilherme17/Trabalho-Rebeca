@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sport</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    
+    h1, h2 {
+      color: #333;
+    }
+    
+    .carrossel {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      overflow: hidden;
+      margin: 20px auto;
+      position: relative;
+      border: 2px solid #333;
+    }
+    
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      transition: transform 0.5s;
+    }
+    
+    .slide {
+      width: 25%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .slide1 { background: #3d5463; }
+    .slide2 { background: rgb(153, 173, 186); }
+    .slide3 { background: #000000; }
+    .slide4 { background: #43716d; }
+    
+    .botoes {
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .botao {
+      padding: 10px 20px;
+      margin: 5px;
+      background: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .botao:hover {
+      background: #555;
+    }
+    
+    ul {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    li {
+      margin: 10px 0;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    th {
+      background: #333;
+      color: white;
+    }
+    
+    form {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+    }
+    
+    input[type="submit"] {
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: #333;
+      color: white;
+    }
+    
+    a {
+      color: #3498db;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sport</h1>
+  <p>Começe agora</p>
+
+  <div class="carrossel">
+    <div class="slides">
+      <div class="slide slide1"><strong><em>PROMOÇÃO 1: 50% OFF</em></strong></div>
+      <div class="slide slide2"><strong><em>PERSONAL TRAINER</em></strong></div>
+      <div class="slide slide3"><strong><em>TESTE GRÁTIS</em></strong></div>
+      <div class="slide slide4"><strong><em>MATRÍCULA ESPECIAL</em></strong></div>
+    </div>
+  </div>
+  
+  <div class="botoes">
+    <button class="botao" onclick="moverCarrossel(-1)">Anterior</button>
+    <button class="botao" onclick="moverCarrossel(1)">Próximo</button>
+  </div>
+
+  <h2>Agende já</h2>
+  <ul>
+    <li>Personal Trainer</li>
+    <li>Teste Gratuito</li>
+    <li>Conhecer o nosso espaço</li>
+  </ul>
+
+  <h2>Promoções!</h2>
+  <p>Matrícula grátis + 1 mês de cortesia!</p>
+
+  <h2>Atendemos todas as suas demandas</h2>
+  <p>Seja: <strong>Melhoria de preços</strong>, <em>Mudança de horários</em>, <u>Agendamento</u> ou até coisas mais simples.</p>
+
+  <h2>Veja um pouco sobre nós</h2>
+  <p><a href="https://www.sports.fr/">Nosso site</a></p>
+  <img src="https://images.pexels.com/photos/2827400/pexels-photo-2827400.jpeg" alt="Academia Sport">
+
+  <h2>Exemplo de como se cadastrar</h2>
+  <table>
+    <tr>
+      <th>Nome</th> 
+      <th>Idade</th>
+      <th>Plano</th>
+    </tr>
+    <tr>
+      <td>Luís</td>
+      <td>15</td>
+      <td>Mensal</td>
+    </tr>
+    <tr>
+      <td>Maria</td>
+      <td>25</td>
+      <td>Anual</td>
+    </tr>
+  </table>
+
+  <h2>Contate-nos</h2>
+  <form>
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome">
+    
+    <label for="msg">Mensagem:</label>
+    <textarea id="msg"></textarea>
+    
+    <input type="submit" value="Enviar">
+  </form>
+
+  <footer>
+    <p>Muito Obrigado Por Visitar O Nosso Site!</p>
+    <p>Sport Fitness - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    let slideAtual = 0;
+    const slides = document.querySelector('.slides');
+    
+    function moverCarrossel(direcao) {
+      slideAtual += direcao;
+      
+      if (slideAtual < 0) slideAtual = 3;
+      if (slideAtual > 3) slideAtual = 0;
+      
+      slides.style.transform = `translateX(-${slideAtual * 25}%)`;
+    }
+    
+    setInterval(() => moverCarrossel(1), 3000);
+    
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Mensagem enviada! Entraremos em contato em breve.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
